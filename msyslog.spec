@@ -17,7 +17,7 @@ Provides:	syslogdaemon
 Obsoletes:	syslog
 Obsoletes:	sysklogd
 Obsoletes:	klogd
-Obsoletes:	klogd
+Obsoletes:	syslog-ng
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
