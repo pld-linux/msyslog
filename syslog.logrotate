@@ -1,49 +1,49 @@
 /var/log/messages {
     prerotate
-	/usr/bin/killall -TSTP klogd || :
+	/bin/killall -TSTP klogd || :
     endscript
     postrotate
-	/usr/bin/killall -HUP syslogd
-	/usr/bin/killall -CONT klogd || :
+	/bin/killall -HUP syslogd
+	/bin/killall -CONT klogd || :
     endscript
 }
 
 /var/log/secure {
     prerotate
-	/usr/bin/killall -TSTP klogd || :
+	/bin/killall -TSTP klogd || :
     endscript
     postrotate
-	/usr/bin/killall -HUP syslogd
-	/usr/bin/killall -CONT klogd || :
+	/bin/killall -HUP syslogd
+	/bin/killall -CONT klogd || :
     endscript
 }
 
 /var/log/maillog {
     prerotate
-	/usr/bin/killall -TSTP klogd || :
+	/bin/killall -TSTP klogd || :
     endscript
     postrotate
-	/usr/bin/killall -HUP syslogd
-	/usr/bin/killall -CONT klogd || :
+	/bin/killall -HUP syslogd
+	/bin/killall -CONT klogd || :
     endscript
 }
 
 /var/log/spooler {
     prerotate
-	/usr/bin/killall -TSTP klogd || :
+	/bin/killall -TSTP klogd || :
     endscript
     postrotate
-	/usr/bin/killall -HUP syslogd
-	/usr/bin/killall -CONT klogd || :
+	/bin/killall -HUP syslogd
+	/bin/killall -CONT klogd || :
     endscript
 }
 
 /var/log/kernel {
     prerotate
-	/usr/bin/killall -TSTP klogd || :
+	/bin/killall -TSTP klogd || :
     endscript
     postrotate
-	/usr/bin/killall -HUP syslogd
-	/usr/bin/killall -CONT klogd || :
+	/bin/killall -HUP syslogd
+	/bin/killall -CONT klogd || :
     endscript
 }
