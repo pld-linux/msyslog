@@ -11,6 +11,8 @@ Source2:	%{name}.sysconfig
 Patch0:		%{name}-DESTDIR.patch
 URL:		http://www.core-sdi.com/english/freesoft.html
 BuildRequires:	autoconf
+BuildRequires:	automake
+Requires(post,preun):	/sbin/chkconfig
 Provides:	syslogdaemon
 Obsoletes:	syslog
 Obsoletes:	sysklogd
