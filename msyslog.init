@@ -5,10 +5,10 @@
 #
 # chkconfig: 2345 12 88
 #
-# description: msyslog is a daemon for the syslog system log interface. It \
-# is based on OpenBSD's syslog daemon implementation, with many improvements \
-# (ie. log hash protection). \
-# It was created by Core-SDI http://www.core-sdi.com
+# description:	msyslog is a daemon for the syslog system log interface. It \
+#		is based on OpenBSD's syslog daemon implementation, with many \
+#		improvements (ie. log hash protection). \
+#		It was created by Core-SDI http://www.core-sdi.com
 
 # Source function library.
 . /etc/rc.d/init.d/functions
