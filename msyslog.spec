@@ -8,6 +8,8 @@ License:	BSD
 Source0:	http://prdownloads.sourceforge.net/msyslog/%{name}-v%{version}-src.tar.gz
 Source1:	%{name}.init
 Source2:	%{name}.sysconfig
+Source3:	syslog.conf
+Source4:	syslog.logrotate
 Patch0:		%{name}-DESTDIR.patch
 URL:		http://www.core-sdi.com/english/freesoft.html
 BuildRequires:	autoconf
@@ -61,6 +63,9 @@ rm -rf $RPM_BUILD_ROOT
 
 install -D %{SOURCE1} $RPM_BUILD_ROOT/etc/rc.d/init.d/msyslog
 install -D %{SOURCE2} $RPM_BUILD_ROOT/etc/sysconfig/msyslog
+install -D %{SOURCE3} $RPM_BUILD_ROOT/%{_sysconfdir}/syslog.conf
+install -D %{SOURCE4} $RPM_BUILD_ROOT/etc/logrotate.d/syslog
+
 install -d $RPM_BUILD_ROOT%{_mandir}/man{5,8}
 install src/man/*.5 $RPM_BUILD_ROOT%{_mandir}/man5
 install src/man/*.8 $RPM_BUILD_ROOT%{_mandir}/man8
@@ -89,6 +94,8 @@ fi
 %defattr(644,root,root,755)
 %doc doc/* AUTHORS ChangeLog INSTALL NEWS README src/examples
 %attr(640,root,root) %config(noreplace) %verify(not size mtime md5) /etc/sysconfig/%{name}
+%attr(640,root,root) %config(noreplace) %verify(not size mtime md5) /etc/*.conf
+%attr(640,root,root) /etc/logrotate.d/*
 %attr(754,root,root) /etc/rc.d/init.d/%{name}
 %attr(755,root,root) %{_sbindir}/*
 %dir %{_libdir}/alat
