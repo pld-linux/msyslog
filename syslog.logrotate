@@ -19,7 +19,7 @@
     endscript
 }
 
-/var/log/mail {
+/var/log/mail.log {
     postrotate
 	/etc/rc.d/init.d/syslog reload >/dev/null 2>&1
 	/etc/rc.d/init.d/klogd reload >/dev/null 2>&1
@@ -33,7 +33,7 @@
     endscript
 }
 
-/var/log/news {
+/var/log/news.log {
     postrotate
 	/etc/rc.d/init.d/syslog reload >/dev/null 2>&1
 	/etc/rc.d/init.d/klogd reload >/dev/null 2>&1
