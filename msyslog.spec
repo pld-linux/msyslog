@@ -1,12 +1,12 @@
 Summary:	A daemon for the syslog system log interface
 Summary(pl):	Modularny demon sysloga
 Name:		msyslog
-Version:	1.09c
+Version:	1.09d
 Release:	1
 Group:		Daemons
 License:	BSD
 Source0:	http://dl.sourceforge.net/msyslog/%{name}-v%{version}-src.tar.gz
-# Source0-md5:	1e9119a051f3febf79802bb059a2f727
+# Source0-md5:	641b4d01756b6aac5a5d332893aefce0
 Source1:	%{name}.init
 Source2:	%{name}.sysconfig
 Source3:	syslog.conf
