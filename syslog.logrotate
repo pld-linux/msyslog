@@ -16,7 +16,7 @@
     endscript
 }
 
-/var/log/mail.log {
+/var/log/maillog {
     postrotate
 	/etc/rc.d/init.d/syslog reload >/dev/null 2>&1
     endscript
