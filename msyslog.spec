@@ -11,9 +11,11 @@ Source2:	%{name}.sysconfig
 Patch0:		%{name}-DESTDIR.patch
 Buildroot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	syslog
+Obsoletes:	sysklogd
+Obsoletes:	klogd
 Obsoletes:	syslog-ng
-Provides:       syslogdaemon
-Provides:	msyslog sysklogd
+Obsoletes:	klogd
+Provides:	syslogdaemon
 
 %description
 This project is intended as a whole revision of previous Secure
@@ -55,6 +57,9 @@ rm -rf $RPM_BUILD_ROOT
 
 install -D %{SOURCE1} $RPM_BUILD_ROOT/etc/rc.d/init.d/msyslog
 install -D %{SOURCE2} $RPM_BUILD_ROOT/etc/sysconfig/msyslog
+install -d $RPM_BUILD_ROOT%{_mandir}/man{5,8}
+install src/man/*.5 $RPM_BUILD_ROOT%{_mandir}/man5
+install src/man/*.8 $RPM_BUILD_ROOT%{_mandir}/man8
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -62,8 +67,9 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc doc/* AUTHORS ChangeLog INSTALL NEWS README
+%attr(640,root,root) %config(noreplace) %verify(not size mtime md5) /etc/sysconfig/%{name}
 %attr(754,root,root) /etc/rc.d/init.d/%{name}
 %attr(755,root,root) %{_sbindir}/*
 %dir %{_libdir}/alat
 %attr(755,root,root) %{_libdir}/alat/*
-%attr(640,root,root) %config(noreplace) %verify(not size mtime md5) /etc/sysconfig/%{name}
+%{_mandir}/man?/*
