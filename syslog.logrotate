@@ -27,3 +27,7 @@
 	/usr/bin/killall -HUP syslogd
     endscript
 }
+/var/log/wtmpx {
+    weekly
+    rotate 1
+}
