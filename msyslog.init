@@ -34,48 +34,51 @@ if [ -f /etc/sysconfig/msyslog ]; then
 fi
 
 case "$1" in
-	start)
-		# Check if the service is already running?
-		if [ ! -f /var/lock/subsys/syslog ]; then
-			msg_starting "System logger"
-			daemon msyslogd $CONFIG $DEBUG $MARK $IM_BSD $IM_DOORS $IM_LINUX $IM_STREAMS $IM_TCP $IM_UDP $IM_UNIX
-			RETVAL=$?
-			[ $RETVAL -eq 0 ] && touch /var/lock/subsys/syslog
-		else
-			msg_already_running "System logger"
-			exit 1
-		fi
-		;;
-	stop)
-		if [ -f /var/lock/subsys/syslog ]; then
-			msg_stopping "System logger"
-			killproc syslogd
-			rm -f /var/lock/subsys/syslog >/dev/null 2>&1
-		else
-			msg_not_running "System logger"
-			exit 1
-		fi
-		;;
-	status)
-		status syslogd
-		exit $?
-		;;
-	restart)
-		$0 stop
-		$0 start
-		;;
-	reload)
-		if [ -f /var/lock/subsys/syslog ]; then
-			msg_reloading "System logger"
-			killproc msyslogd -HUP
-		else
-			msg_not_running "System logger"
-			exit 1
-		fi
-		;;
-	*)
-		msg_usage "$0 {start|stop|status|restart|reload}"
+  start)
+	# Check if the service is already running?
+	if [ ! -f /var/lock/subsys/syslog ]; then
+		msg_starting "System logger"
+		daemon msyslogd $CONFIG $DEBUG $MARK $IM_BSD $IM_DOORS $IM_LINUX $IM_STREAMS $IM_TCP $IM_UDP $IM_UNIX
+		RETVAL=$?
+		[ $RETVAL -eq 0 ] && touch /var/lock/subsys/syslog
+	else
+		msg_already_running "System logger"
 		exit 1
+	fi
+	;;
+  stop)
+	if [ -f /var/lock/subsys/syslog ]; then
+		msg_stopping "System logger"
+		killproc syslogd
+		rm -f /var/lock/subsys/syslog >/dev/null 2>&1
+	else
+		msg_not_running "System logger"
+		exit 1
+	fi
+	;;
+  status)
+	status syslogd
+	exit $?
+	;;
+  restart)
+	$0 stop
+	$0 start
+	;;
+  reload)
+	if [ -f /var/lock/subsys/syslog ]; then
+		msg_reloading "System logger"
+		busy
+		killproc msyslogd -HUP
+		RETVAL=$?
+		[ $RETVAL -eq 0 ] && ok || died
+	else
+		msg_not_running "System logger"
+		exit 1
+	fi
+	;;
+  *)
+	msg_usage "$0 {start|stop|restart|reload|status}"
+	exit 1
 esac
 
 exit $RETVAL
