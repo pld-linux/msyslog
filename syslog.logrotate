@@ -18,6 +18,16 @@
     endscript
 }
 
+/var/log/alert {
+    prerotate
+	/bin/killall -TSTP klogd || :
+    endscript
+    postrotate
+	/bin/killall -HUP syslogd
+	/bin/killall -CONT klogd || :
+    endscript
+}
+
 /var/log/maillog {
     prerotate
 	/bin/killall -TSTP klogd || :
