@@ -1,59 +1,41 @@
 /var/log/messages {
-    prerotate
-	/bin/killall -TSTP klogd || :
-    endscript
     postrotate
-	/bin/killall -HUP syslogd
-	/bin/killall -CONT klogd || :
+	/etc/rc.d/init.d/syslog-ng reload >/dev/null 2>&1
+	/etc/rc.d/init.d/klogd restart >/dev/null 2>&1
     endscript
 }
 
 /var/log/secure {
-    prerotate
-	/bin/killall -TSTP klogd || :
-    endscript
     postrotate
-	/bin/killall -HUP syslogd
-	/bin/killall -CONT klogd || :
+	/etc/rc.d/init.d/syslog-ng reload >/dev/null 2>&1
+	/etc/rc.d/init.d/klogd restart >/dev/null 2>&1
     endscript
 }
 
 /var/log/alert {
-    prerotate
-	/bin/killall -TSTP klogd || :
-    endscript
     postrotate
-	/bin/killall -HUP syslogd
-	/bin/killall -CONT klogd || :
+	/etc/rc.d/init.d/syslog-ng reload >/dev/null 2>&1
+	/etc/rc.d/init.d/klogd restart >/dev/null 2>&1
     endscript
 }
 
 /var/log/maillog {
-    prerotate
-	/bin/killall -TSTP klogd || :
-    endscript
     postrotate
-	/bin/killall -HUP syslogd
-	/bin/killall -CONT klogd || :
+	/etc/rc.d/init.d/syslog-ng reload >/dev/null 2>&1
+	/etc/rc.d/init.d/klogd restart >/dev/null 2>&1
     endscript
 }
 
 /var/log/spooler {
-    prerotate
-	/bin/killall -TSTP klogd || :
-    endscript
     postrotate
-	/bin/killall -HUP syslogd
-	/bin/killall -CONT klogd || :
+	/etc/rc.d/init.d/syslog-ng reload >/dev/null 2>&1
+	/etc/rc.d/init.d/klogd restart >/dev/null 2>&1
     endscript
 }
 
 /var/log/kernel {
-    prerotate
-	/bin/killall -TSTP klogd || :
-    endscript
     postrotate
-	/bin/killall -HUP syslogd
-	/bin/killall -CONT klogd || :
+	/etc/rc.d/init.d/syslog-ng reload >/dev/null 2>&1
+	/etc/rc.d/init.d/klogd restart >/dev/null 2>&1
     endscript
 }
