@@ -1,7 +1,7 @@
 Summary:	A daemon for the syslog system log interface
 Summary(pl):	Modularny demon sysloga
 Name:		msyslog
-Version:	1.08e
+Version:	1.09c
 Release:	1
 Group:		Daemons
 License:	BSD
@@ -11,6 +11,7 @@ Source2:	%{name}.sysconfig
 Source3:	syslog.conf
 Source4:	syslog.logrotate
 Patch0:		%{name}-DESTDIR.patch
+Patch1:		%{name}-pathes.patch
 URL:		http://www.core-sdi.com/english/freesoft.html
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -47,6 +48,7 @@ linux, unix, tcp i udp.
 %prep
 %setup -q -n %{name}-v%{version}
 %patch0 -p1
+%patch1 -p0
 
 %build
 rm -f missing
@@ -92,7 +94,7 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc doc/* AUTHORS ChangeLog INSTALL NEWS README src/examples
+%doc doc/* AUTHORS INSTALL NEWS README src/examples
 %attr(640,root,root) %config(noreplace) %verify(not size mtime md5) /etc/sysconfig/%{name}
 %attr(640,root,root) %config(noreplace) %verify(not size mtime md5) /etc/*.conf
 %attr(640,root,root) /etc/logrotate.d/*
