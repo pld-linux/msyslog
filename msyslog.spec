@@ -99,7 +99,7 @@ fi
 %doc doc/* AUTHORS INSTALL NEWS README src/examples
 %attr(640,root,root) %config(noreplace) %verify(not size mtime md5) /etc/sysconfig/%{name}
 %attr(640,root,root) %config(noreplace) %verify(not size mtime md5) /etc/*.conf
-%attr(640,root,root) /etc/logrotate.d/*
+%attr(640,root,root) %config(noreplace) %verify(not size mtime md5) /etc/logrotate.d/*
 %attr(754,root,root) /etc/rc.d/init.d/%{name}
 %attr(755,root,root) %{_sbindir}/*
 %dir %{_libdir}/alat
