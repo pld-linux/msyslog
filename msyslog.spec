@@ -6,6 +6,7 @@ Release:	1
 Group:		Daemons
 License:	BSD
 Source0:	http://dl.sourceforge.net/msyslog/%{name}-v%{version}-src.tar.gz
+# Source0-md5:	1e9119a051f3febf79802bb059a2f727
 Source1:	%{name}.init
 Source2:	%{name}.sysconfig
 Source3:	syslog.conf
