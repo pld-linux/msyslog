@@ -5,7 +5,7 @@ Version:	1.09c
 Release:	1
 Group:		Daemons
 License:	BSD
-Source0:	http://prdownloads.sourceforge.net/msyslog/%{name}-v%{version}-src.tar.gz
+Source0:	http://dl.sourceforge.net/msyslog/%{name}-v%{version}-src.tar.gz
 Source1:	%{name}.init
 Source2:	%{name}.sysconfig
 Source3:	syslog.conf
