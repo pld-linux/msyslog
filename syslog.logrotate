@@ -1,4 +1,39 @@
+/var/log/alert {
+    postrotate
+	/etc/rc.d/init.d/syslog reload >/dev/null 2>&1
+	/etc/rc.d/init.d/klogd reload >/dev/null 2>&1
+    endscript
+}
+
+/var/log/debug {
+    postrotate
+	/etc/rc.d/init.d/syslog reload >/dev/null 2>&1
+	/etc/rc.d/init.d/klogd reload >/dev/null 2>&1
+    endscript
+}
+
+/var/log/kernel {
+    postrotate
+	/etc/rc.d/init.d/syslog reload >/dev/null 2>&1
+	/etc/rc.d/init.d/klogd reload >/dev/null 2>&1
+    endscript
+}
+
+/var/log/mail {
+    postrotate
+	/etc/rc.d/init.d/syslog reload >/dev/null 2>&1
+	/etc/rc.d/init.d/klogd reload >/dev/null 2>&1
+    endscript
+}
+
 /var/log/messages {
+    postrotate
+	/etc/rc.d/init.d/syslog reload >/dev/null 2>&1
+	/etc/rc.d/init.d/klogd reload >/dev/null 2>&1
+    endscript
+}
+
+/var/log/news {
     postrotate
 	/etc/rc.d/init.d/syslog reload >/dev/null 2>&1
 	/etc/rc.d/init.d/klogd reload >/dev/null 2>&1
@@ -12,28 +47,7 @@
     endscript
 }
 
-/var/log/alert {
-    postrotate
-	/etc/rc.d/init.d/syslog reload >/dev/null 2>&1
-	/etc/rc.d/init.d/klogd reload >/dev/null 2>&1
-    endscript
-}
-
-/var/log/maillog {
-    postrotate
-	/etc/rc.d/init.d/syslog reload >/dev/null 2>&1
-	/etc/rc.d/init.d/klogd reload >/dev/null 2>&1
-    endscript
-}
-
-/var/log/spooler {
-    postrotate
-	/etc/rc.d/init.d/syslog reload >/dev/null 2>&1
-	/etc/rc.d/init.d/klogd reload >/dev/null 2>&1
-    endscript
-}
-
-/var/log/kernel {
+/var/log/syslog {
     postrotate
 	/etc/rc.d/init.d/syslog reload >/dev/null 2>&1
 	/etc/rc.d/init.d/klogd reload >/dev/null 2>&1
