@@ -1,62 +1,53 @@
 /var/log/alert {
     postrotate
 	/etc/rc.d/init.d/syslog reload >/dev/null 2>&1
-	/etc/rc.d/init.d/klogd reload >/dev/null 2>&1
     endscript
 }
 
 /var/log/debug {
     postrotate
 	/etc/rc.d/init.d/syslog reload >/dev/null 2>&1
-	/etc/rc.d/init.d/klogd reload >/dev/null 2>&1
     endscript
 }
 
 /var/log/kernel {
     postrotate
 	/etc/rc.d/init.d/syslog reload >/dev/null 2>&1
-	/etc/rc.d/init.d/klogd reload >/dev/null 2>&1
     endscript
 }
 
 /var/log/freshclam.log {
     postrotate
 	/etc/rc.d/init.d/syslog reload >/dev/null 2>&1
-	/etc/rc.d/init.d/klogd reload >/dev/null 2>&1
     endscript
 }
 
 /var/log/mail.log {
     postrotate
 	/etc/rc.d/init.d/syslog reload >/dev/null 2>&1
-	/etc/rc.d/init.d/klogd reload >/dev/null 2>&1
     endscript
 }
 
 /var/log/messages {
     postrotate
 	/etc/rc.d/init.d/syslog reload >/dev/null 2>&1
-	/etc/rc.d/init.d/klogd reload >/dev/null 2>&1
     endscript
 }
 
 /var/log/news.log {
     postrotate
 	/etc/rc.d/init.d/syslog reload >/dev/null 2>&1
-	/etc/rc.d/init.d/klogd reload >/dev/null 2>&1
     endscript
 }
 
 /var/log/secure {
     postrotate
 	/etc/rc.d/init.d/syslog reload >/dev/null 2>&1
-	/etc/rc.d/init.d/klogd reload >/dev/null 2>&1
     endscript
 }
 
 /var/log/syslog {
     postrotate
 	/etc/rc.d/init.d/syslog reload >/dev/null 2>&1
-	/etc/rc.d/init.d/klogd reload >/dev/null 2>&1
     endscript
 }
