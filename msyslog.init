@@ -71,7 +71,7 @@ case "$1" in
 		killproc msyslogd -HUP
 		RETVAL=$?
 	else
-		msg_not_running "System logger"
+		msg_not_running "System logger" >&2
 		exit 7
 	fi
 	;;
