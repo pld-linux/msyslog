@@ -36,11 +36,11 @@ are classic, mysql, peo, pgsql, regex and tcp. Available input modules
 are bsd, linux, unix, tcp and udp.
 
 %description -l pl
-Projest msyslog zosta³ przewidzany jako ca³kowicie nowa odmiana
+Projekt msyslog zosta³ przewidziany jako ca³kowicie nowa odmiana
 projektu Bezpiecznego sysloga. Posiada ca³± jego funkcjonalno¶æ i
-troszke wiêcej. Niedopracowane rzeczy to support solarisa i
+troszkê wiêcej. Niedopracowane rzeczy to support solarisa i
 kompatybilno¶æ z Auditem. Ca³a wewnêtrzna struktura jest przewidziana
-do pracy z modu³ami wejscia i wyj¶cia, ustandaryzowanym miêdzymordziem
+do pracy z modu³ami wej¶cia i wyj¶cia, ustandaryzowanym miêdzymordziem
 do ³atwego rozwijania korzystaj±c z specjalnych sterowników i
 elastycznej konfiguracji. Aktualne modu³y wyj¶ciowe to: klasyczny,
 mysql, peo, pgsql, regex i tcp. Dostêpne modu³y wej¶ciowe to bsd,
