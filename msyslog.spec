@@ -81,18 +81,17 @@ rm -rf $RPM_BUILD_ROOT
 %post
 /sbin/chkconfig --add msyslog
 if [ -f /var/lock/subsys/msyslog ]; then
-        /etc/rc.d/init.d/msyslog restart >/dev/null 2>&1
+	/etc/rc.d/init.d/msyslog restart >/dev/null 2>&1
 else
-        echo "Run \"/etc/rc.d/init.d/msyslog start\" to start msyslog
-daemon."
+	echo "Run \"/etc/rc.d/init.d/msyslog start\" to start msyslog daemon."
 fi
 
 %preun
 if [ "$1" = "0" ]; then
-        if [ -f /var/lock/subsys/msyslog ]; then
-                /etc/rc.d/init.d/msyslog stop >&2
-        fi
-        /sbin/chkconfig --del msyslog
+	if [ -f /var/lock/subsys/msyslog ]; then
+		/etc/rc.d/init.d/msyslog stop >&2
+	fi
+	/sbin/chkconfig --del msyslog
 fi
 
 %files
