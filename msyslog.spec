@@ -5,19 +5,18 @@ Version:	1.08e
 Release:	1
 Group:		Daemons
 License:	BSD
-URL:		http://www.core-sdi.com/english/freesoft.html
 Source0:	http://prdownloads.sourceforge.net/msyslog/%{name}-v%{version}-src.tar.gz
 Source1:	%{name}.init
 Source2:	%{name}.sysconfig
 Patch0:		%{name}-DESTDIR.patch
-Buildroot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+URL:		http://www.core-sdi.com/english/freesoft.html
 BuildRequires:	autoconf
+Provides:	syslogdaemon
 Obsoletes:	syslog
 Obsoletes:	sysklogd
 Obsoletes:	klogd
-Obsoletes:	msyslog
 Obsoletes:	klogd
-Provides:	syslogdaemon
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 This project is intended as a whole revision of previous Secure
