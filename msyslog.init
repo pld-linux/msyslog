@@ -33,15 +33,6 @@ if [ -f /etc/sysconfig/msyslog ]; then
 	. /etc/sysconfig/msyslog
 fi
 
-stop() {
-	echo -n "Shutting down msyslogd: "
-	killproc msyslogd
-	RETVAL=$?
-	echo
-	[ $RETVAL -eq 0 ] && rm -f /var/lock/subsys/msyslog
-	return $RETVAL
-}
-
 case "$1" in
 	start)
 		# Check if the service is already running?
