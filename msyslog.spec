@@ -62,11 +62,13 @@ rm -f missing
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 install -D %{SOURCE1} $RPM_BUILD_ROOT/etc/rc.d/init.d/msyslog
 install -D %{SOURCE2} $RPM_BUILD_ROOT/etc/sysconfig/msyslog
-install -D %{SOURCE3} $RPM_BUILD_ROOT/%{_sysconfdir}/syslog.conf
+install -D %{SOURCE3} $RPM_BUILD_ROOT%{_sysconfdir}/syslog.conf
 install -D %{SOURCE4} $RPM_BUILD_ROOT/etc/logrotate.d/syslog
 
 install -d $RPM_BUILD_ROOT%{_mandir}/man{5,8}
