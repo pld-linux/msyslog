@@ -33,6 +33,7 @@ if [ -f /etc/sysconfig/msyslog ]; then
 	. /etc/sysconfig/msyslog
 fi
 
+RETVAL=0
 case "$1" in
   start)
 	# Check if the service is already running?
@@ -43,7 +44,6 @@ case "$1" in
 		[ $RETVAL -eq 0 ] && touch /var/lock/subsys/syslog
 	else
 		msg_already_running "System logger"
-		exit 1
 	fi
 	;;
   stop)
@@ -53,30 +53,31 @@ case "$1" in
 		rm -f /var/lock/subsys/syslog >/dev/null 2>&1
 	else
 		msg_not_running "System logger"
-		exit 1
 	fi
 	;;
   status)
 	status syslogd
 	exit $?
+	exit $?
 	;;
   restart)
 	$0 stop
 	$0 start
+	exit $?
 	;;
-  reload)
+  reload|force-reload)
 	if [ -f /var/lock/subsys/syslog ]; then
 		msg_reloading "System logger"
 		killproc msyslogd -HUP
 		RETVAL=$?
 	else
 		msg_not_running "System logger"
-		exit 1
+		exit 7
 	fi
 	;;
   *)
-	msg_usage "$0 {start|stop|restart|reload|status}"
-	exit 1
+	msg_usage "$0 {start|stop|restart|reload|force-reload|status}"
+	exit 3
 esac
 
 exit $RETVAL
