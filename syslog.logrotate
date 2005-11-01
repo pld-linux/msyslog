@@ -1,53 +1,16 @@
-/var/log/alert {
-    postrotate
-	/etc/rc.d/init.d/syslog reload >/dev/null 2>&1
-    endscript
-}
-
-/var/log/debug {
-    postrotate
-	/etc/rc.d/init.d/syslog reload >/dev/null 2>&1
-    endscript
-}
-
-/var/log/kernel {
-    postrotate
-	/etc/rc.d/init.d/syslog reload >/dev/null 2>&1
-    endscript
-}
-
-/var/log/maillog {
-    postrotate
-	/etc/rc.d/init.d/syslog reload >/dev/null 2>&1
-    endscript
-}
-
-/var/log/messages {
-    postrotate
-	/etc/rc.d/init.d/syslog reload >/dev/null 2>&1
-    endscript
-}
-
-/var/log/news.log {
-    postrotate
-	/etc/rc.d/init.d/syslog reload >/dev/null 2>&1
-    endscript
-}
-
-/var/log/secure {
-    postrotate
-	/etc/rc.d/init.d/syslog reload >/dev/null 2>&1
-    endscript
-}
-
-/var/log/syslog {
-    postrotate
-	/etc/rc.d/init.d/syslog reload >/dev/null 2>&1
-    endscript
-}
-
+/var/log/alert
+/var/log/debug
+/var/log/kernel
+/var/log/maillog
+/var/log/messages
+/var/log/news.log
+/var/log/secure
+/var/log/syslog
 /var/log/xferlog {
-	postrotate
+	create 640 syslog syslog
+	sharedscripts
+
+    postrotate
 		/etc/rc.d/init.d/syslog reload >/dev/null 2>&1
-	endscript
+    endscript
 }
