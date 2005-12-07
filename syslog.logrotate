@@ -10,7 +10,7 @@
 	create 640 syslog syslog
 	sharedscripts
 
-    postrotate
+	postrotate
 		/etc/rc.d/init.d/syslog reload >/dev/null 2>&1
-    endscript
+	endscript
 }
