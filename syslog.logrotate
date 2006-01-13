@@ -1,41 +1,15 @@
-/var/log/messages {
+/var/log/messages
+/var/log/secure
+/var/log/alert
+/var/log/maillog
+/var/log/spooler
+/var/log/kernel
+/var/log/daemon
+{
+    sharedscripts
     postrotate
 	/etc/rc.d/init.d/syslog reload >/dev/null 2>&1
 	/etc/rc.d/init.d/klogd restart >/dev/null 2>&1
     endscript
 }
 
-/var/log/secure {
-    postrotate
-	/etc/rc.d/init.d/syslog reload >/dev/null 2>&1
-	/etc/rc.d/init.d/klogd restart >/dev/null 2>&1
-    endscript
-}
-
-/var/log/alert {
-    postrotate
-	/etc/rc.d/init.d/syslog reload >/dev/null 2>&1
-	/etc/rc.d/init.d/klogd restart >/dev/null 2>&1
-    endscript
-}
-
-/var/log/maillog {
-    postrotate
-	/etc/rc.d/init.d/syslog reload >/dev/null 2>&1
-	/etc/rc.d/init.d/klogd restart >/dev/null 2>&1
-    endscript
-}
-
-/var/log/spooler {
-    postrotate
-	/etc/rc.d/init.d/syslog reload >/dev/null 2>&1
-	/etc/rc.d/init.d/klogd restart >/dev/null 2>&1
-    endscript
-}
-
-/var/log/kernel {
-    postrotate
-	/etc/rc.d/init.d/syslog reload >/dev/null 2>&1
-	/etc/rc.d/init.d/klogd restart >/dev/null 2>&1
-    endscript
-}
