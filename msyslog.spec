@@ -17,6 +17,7 @@ URL:		http://www.core-sdi.com/english/freesoft.html
 BuildRequires:	autoconf
 BuildRequires:	automake
 Requires(post,preun):	/sbin/chkconfig
+Requires:	rc-scripts
 Provides:	syslogdaemon
 Obsoletes:	syslog
 Obsoletes:	sysklogd
@@ -80,18 +81,13 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 /sbin/chkconfig --add msyslog
-if [ -f /var/lock/subsys/msyslog ]; then
-	/etc/rc.d/init.d/msyslog restart >/dev/null 2>&1
-else
-	echo "Run \"/etc/rc.d/init.d/msyslog start\" to start msyslog daemon."
-fi
+%service msyslog restart
 
 %preun
 if [ "$1" = "0" ]; then
-	if [ -f /var/lock/subsys/msyslog ]; then
-		/etc/rc.d/init.d/msyslog stop >&2
-	fi
+	%service msyslog stop
 	/sbin/chkconfig --del msyslog
+	
 fi
 
 %files
