@@ -11,6 +11,6 @@
 	sharedscripts
 
 	postrotate
-		/etc/rc.d/init.d/syslog flush-logs >/dev/null
+		/sbin/service syslog flush-logs >/dev/null
 	endscript
 }
