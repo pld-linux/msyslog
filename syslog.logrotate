@@ -7,7 +7,7 @@
 /var/log/secure
 /var/log/syslog
 /var/log/xferlog {
-	create 640 syslog syslog
+	create 640 syslog logs
 	sharedscripts
 
 	postrotate
