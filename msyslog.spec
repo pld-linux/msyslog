@@ -1,5 +1,5 @@
 Summary:	A daemon for the syslog system log interface
-Summary(pl):	Modularny demon sysloga
+Summary(pl.UTF-8):   Modularny demon sysloga
 Name:		msyslog
 Version:	1.09c
 Release:	1
@@ -36,15 +36,15 @@ devices and flexible configurations. Current available output modules
 are classic, mysql, peo, pgsql, regex and tcp. Available input modules
 are bsd, linux, unix, tcp and udp.
 
-%description -l pl
-Projekt msyslog zosta³ przewidziany jako ca³kowicie nowa odmiana
-projektu Bezpiecznego sysloga. Posiada ca³± jego funkcjonalno¶æ i
-troszkê wiêcej. Niedopracowane rzeczy to support solarisa i
-kompatybilno¶æ z Auditem. Ca³a wewnêtrzna struktura jest przewidziana
-do pracy z modu³ami wej¶cia i wyj¶cia, ustandaryzowanym miêdzymordziem
-do ³atwego rozwijania korzystaj±c z specjalnych sterowników i
-elastycznej konfiguracji. Aktualne modu³y wyj¶ciowe to: klasyczny,
-mysql, peo, pgsql, regex i tcp. Dostêpne modu³y wej¶ciowe to bsd,
+%description -l pl.UTF-8
+Projekt msyslog zostaÅ‚ przewidziany jako caÅ‚kowicie nowa odmiana
+projektu Bezpiecznego sysloga. Posiada caÅ‚Ä… jego funkcjonalnoÅ›Ä‡ i
+troszkÄ™ wiÄ™cej. Niedopracowane rzeczy to support solarisa i
+kompatybilnoÅ›Ä‡ z Auditem. CaÅ‚a wewnÄ™trzna struktura jest przewidziana
+do pracy z moduÅ‚ami wejÅ›cia i wyjÅ›cia, ustandaryzowanym miÄ™dzymordziem
+do Å‚atwego rozwijania korzystajÄ…c z specjalnych sterownikÃ³w i
+elastycznej konfiguracji. Aktualne moduÅ‚y wyjÅ›ciowe to: klasyczny,
+mysql, peo, pgsql, regex i tcp. DostÄ™pne moduÅ‚y wejÅ›ciowe to bsd,
 linux, unix, tcp i udp.
 
 %prep
