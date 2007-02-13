@@ -1,5 +1,5 @@
 Summary:	A daemon for the syslog system log interface
-Summary(pl.UTF-8):   Modularny demon sysloga
+Summary(pl.UTF-8):	Modularny demon sysloga
 Name:		msyslog
 Version:	1.09c
 Release:	1
