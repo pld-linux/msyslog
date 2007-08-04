@@ -2,7 +2,7 @@ Summary:	A daemon for the syslog system log interface
 Summary(pl.UTF-8):	Modularny demon sysloga
 Name:		msyslog
 Version:	1.09c
-Release:	1
+Release:	2
 Group:		Daemons
 License:	BSD
 Source0:	http://dl.sourceforge.net/msyslog/%{name}-v%{version}-src.tar.gz
@@ -19,10 +19,10 @@ BuildRequires:	automake
 Requires(post,preun):	/sbin/chkconfig
 Requires:	rc-scripts
 Provides:	syslogdaemon
-Obsoletes:	syslog
-Obsoletes:	sysklogd
 Obsoletes:	klogd
-Obsoletes:	syslog-ng
+Conflicts:	syslog
+Conflicts:	sysklogd
+Conflicts:	syslog-ng
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
