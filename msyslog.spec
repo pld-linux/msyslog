@@ -19,9 +19,9 @@ BuildRequires:	automake
 Requires(post,preun):	/sbin/chkconfig
 Requires:	rc-scripts
 Provides:	syslogdaemon
-Obsoletes:	klogd
+Obsoletes:	sysklogd
+Conflicts:	klogd
 Conflicts:	syslog
-Conflicts:	sysklogd
 Conflicts:	syslog-ng
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
