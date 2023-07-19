@@ -1,19 +1,22 @@
 Summary:	A daemon for the syslog system log interface
 Summary(pl.UTF-8):	Modularny demon sysloga
 Name:		msyslog
-Version:	1.09c
-Release:	2
+Version:	1.09d
+Release:	1
 Group:		Daemons
 License:	BSD
-Source0:	http://dl.sourceforge.net/msyslog/%{name}-v%{version}-src.tar.gz
-# Source0-md5:	1e9119a051f3febf79802bb059a2f727
+Source0:	https://downloads.sourceforge.net/msyslog/%{name}-v%{version}-src.tar.gz
+# Source0-md5:	641b4d01756b6aac5a5d332893aefce0
 Source1:	%{name}.init
 Source2:	%{name}.sysconfig
 Source3:	syslog.conf
 Source4:	syslog.logrotate
 Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-pathes.patch
-URL:		http://www.core-sdi.com/english/freesoft.html
+Patch2:		%{name}-configure.patch
+Patch3:		%{name}-no-strip.patch
+Patch4:		%{name}-link.patch
+URL:		https://sourceforge.net/projects/msyslog/
 BuildRequires:	autoconf
 BuildRequires:	automake
 Requires(post,preun):	/sbin/chkconfig
@@ -24,6 +27,9 @@ Conflicts:	klogd
 Conflicts:	syslog
 Conflicts:	syslog-ng
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+# uses symbols from binary
+%define		skip_post_check_so	libmsyslog.so.*
 
 %description
 This project is intended as a whole revision of previous Secure
@@ -51,9 +57,15 @@ linux, unix, tcp i udp.
 %setup -q -n %{name}-v%{version}
 %patch0 -p1
 %patch1 -p0
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+
+# missing "_" in filenames (but expected by makefiles)
+%{__mv} src/modules/{im,im_}file.c
+%{__mv} src/man/{im,im_}file.8
 
 %build
-rm -f missing
 %{__aclocal}
 %{__autoconf}
 %configure \
@@ -73,8 +85,8 @@ install -D %{SOURCE3} $RPM_BUILD_ROOT%{_sysconfdir}/syslog.conf
 install -D %{SOURCE4} $RPM_BUILD_ROOT/etc/logrotate.d/syslog
 
 install -d $RPM_BUILD_ROOT%{_mandir}/man{5,8}
-install src/man/*.5 $RPM_BUILD_ROOT%{_mandir}/man5
-install src/man/*.8 $RPM_BUILD_ROOT%{_mandir}/man8
+cp -p src/man/*.5 $RPM_BUILD_ROOT%{_mandir}/man5
+cp -p src/man/*.8 $RPM_BUILD_ROOT%{_mandir}/man8
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -87,17 +99,21 @@ rm -rf $RPM_BUILD_ROOT
 if [ "$1" = "0" ]; then
 	%service msyslog stop
 	/sbin/chkconfig --del msyslog
-	
 fi
 
 %files
 %defattr(644,root,root,755)
-%doc doc/* AUTHORS INSTALL NEWS README src/examples
-%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/%{name}
-%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/*.conf
-%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/logrotate.d/*
-%attr(754,root,root) /etc/rc.d/init.d/%{name}
-%attr(755,root,root) %{_sbindir}/*
+%doc AUTHORS INSTALL NEWS README doc/* src/examples
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/msyslog
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/syslog.conf
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/logrotate.d/syslog
+%attr(754,root,root) /etc/rc.d/init.d/msyslog
+%attr(755,root,root) %{_sbindir}/msyslogd
+%attr(755,root,root) %{_sbindir}/peochk
 %dir %{_libdir}/alat
-%attr(755,root,root) %{_libdir}/alat/*
-%{_mandir}/man?/*
+%attr(755,root,root) %{_libdir}/alat/libmsyslog.so.%{version}
+%{_mandir}/man5/syslog.conf.5*
+%{_mandir}/man8/im_*.8*
+%{_mandir}/man8/om_*.8*
+%{_mandir}/man8/peochk.8*
+%{_mandir}/man8/syslogd.8*

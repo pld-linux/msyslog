@@ -1,0 +1,11 @@
+--- msyslog-v1.09d/src/Makefile.in.orig	2023-07-19 21:02:26.720790580 +0200
++++ msyslog-v1.09d/src/Makefile.in	2023-07-19 21:34:52.333583624 +0200
+@@ -71,7 +71,7 @@ install-prog:
+ 	@if [ -f "$(INSTALL_DIR)/$(PROG)" ]; then \
+ 		mv -f "$(INSTALL_DIR)/$(PROG)" "$(INSTALL_DIR)/$(PROG).old"; \
+ 	fi
+-	$(INSTALL) -s $(PROG) $(INSTALL_DIR)/ ;
++	$(INSTALL) $(PROG) $(INSTALL_DIR)/ ;
+ 
+ install: install-prog
+ 	@echo -e \

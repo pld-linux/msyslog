@@ -1,0 +1,15 @@
+--- msyslog-v1.09d/configure.in.orig	2023-07-19 21:02:26.724123895 +0200
++++ msyslog-v1.09d/configure.in	2023-07-19 21:37:41.122669215 +0200
+@@ -33,9 +33,9 @@ AC_HEADER_TIME
+ AC_STRUCT_TM
+ 
+ dnl Checks for library functions.
+-AC_CHECK_LIB(dl, dlopen, SYSLOGD_LIBS="$SYSLOGD_LIBS -ldl")
+-AC_CHECK_LIB(socket, connect, SYSLOGD_LIBS="$SYSLOGD_LIBS -lsocket")
+-AC_CHECK_LIB(nsl, gethostbyname, SYSLOGD_LIBS="$SYSLOGD_LIBS -lnsl")
++AC_CHECK_FUNC([dlopen], [] , [AC_CHECK_LIB(dl, dlopen, SYSLOGD_LIBS="$SYSLOGD_LIBS -ldl")])
++AC_CHECK_FUNC([connect], [], [AC_CHECK_LIB(socket, connect, SYSLOGD_LIBS="$SYSLOGD_LIBS -lsocket")])
++AC_CHECK_FUNC([gethostbyname], [], [AC_CHECK_LIB(nsl, gethostbyname, SYSLOGD_LIBS="$SYSLOGD_LIBS -lnsl")])
+ AC_DEFINE(SYSLOGD_LIBS, $SYSLOGD_LIBS)
+ AC_PROG_GCC_TRADITIONAL
+ AC_FUNC_MEMCMP
